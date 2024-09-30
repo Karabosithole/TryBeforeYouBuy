@@ -22,6 +22,6 @@
 ## Getting Started
 1. **Clone the Repository:**
    ```bash
-   git clone https://github.com/yourusername/fashion-fit-simulator.git
+   git clone https://github.com/karabosithole/TryBeforeYouBuy.git
 
 2. **Install Dependencies: Follow the setup instructions in the README.md file to install necessary dependencies for both frontend and backend components.
