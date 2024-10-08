@@ -1,6 +1,6 @@
-# Try It On
+# Try Before You Buy
 
-**Try It On** is an innovative application designed to help users visualize how clothing items will fit based on their personal body measurements. The app leverages advanced 3D simulation technology to provide a realistic and interactive experience, allowing users to see how different clothing styles and sizes will look on their virtual avatar.
+**Try Before You Buy** is an innovative application designed to help users visualize how clothing items will fit based on their personal body measurements. The app leverages advanced 3D simulation technology to provide a realistic and interactive experience, allowing users to see how different clothing styles and sizes will look on their virtual avatar.
 
 ## Features
 - **3D Simulation:** Realistic visualization of how clothing items fit using Unity 3D, providing a true-to-life representation of various apparel.
