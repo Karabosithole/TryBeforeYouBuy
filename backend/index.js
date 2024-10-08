@@ -17,7 +17,6 @@ app.get('/', (req, res) => {
   res.send('Fashion Fit Simulator Backend');
 });
 
-// Get all clothing items
 app.get('/api/clothing', (req, res) => {
   if (clothingItems.length === 0) {
     return res.status(404).json({ message: 'No clothing items found' });
@@ -25,7 +24,6 @@ app.get('/api/clothing', (req, res) => {
   res.status(200).json(clothingItems);
 });
 
-// Add a new clothing item
 app.post('/api/clothing', (req, res) => {
   const { name, size, price } = req.body;
   if (!name || !size || !price) {
@@ -36,8 +34,12 @@ app.post('/api/clothing', (req, res) => {
   res.status(201).json(newItem);
 });
 
-// Start server
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
-});
+// Export the app for testing
+module.exports = app;
 
+// Only start the server if not in test environment
+if (require.main === module) {
+  app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
+  });
+}
