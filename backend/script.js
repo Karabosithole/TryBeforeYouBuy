@@ -15,3 +15,16 @@ document.getElementById('measurementForm').addEventListener('submit', function(e
         <p>Inseam: ${inseam ? inseam + ' cm' : 'Not provided'}</p>
     `;
 });
+
+// Handle viewing clothing fit
+document.querySelectorAll('.view-fit').forEach(button => {
+    button.addEventListener('click', function() {
+        const item = this.parentElement;
+        const size = item.getAttribute('data-size');
+        const resultDiv = document.getElementById('result');
+
+        resultDiv.innerHTML += `<h3>Selected Item: ${item.querySelector('h3').innerText}</h3>
+            <p>Size: ${size}</p>
+            <p>See how it fits based on your measurements!</p>`;
+    });
+});

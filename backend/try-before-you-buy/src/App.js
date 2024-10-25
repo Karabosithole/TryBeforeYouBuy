@@ -1,21 +1,33 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 
 function App() {
-  // State variables for user inputs and clothing items
   const [measurements, setMeasurements] = useState({
     chest: '',
     waist: '',
     hips: '',
   });
 
+  const [clothingItems, setClothingItems] = useState([]);
   const [selectedItem, setSelectedItem] = useState(null);
 
-  const clothingItems = [
-    { id: 1, name: 'T-Shirt', size: 'M', description: 'A comfortable cotton t-shirt.', image: 'path/to/tshirt-image.jpg' },
-    { id: 2, name: 'Jeans', size: '32', description: 'Stylish blue jeans.', image: 'path/to/jeans-image.jpg' },
-    // Add more clothing items as needed
-  ];
+  // Fetch clothing items from the API
+  useEffect(() => {
+    const fetchClothingItems = async () => {
+      try {
+        const response = await fetch('http://localhost:5001/api/clothing');
+        if (!response.ok) {
+          throw new Error('Failed to fetch clothing items');
+        }
+        const data = await response.json();
+        setClothingItems(data);
+      } catch (error) {
+        console.error('Error fetching clothing items:', error);
+      }
+    };
+
+    fetchClothingItems();
+  }, []); // Empty dependency array to run only once when the component mounts
 
   // Handle input changes
   const handleChange = (e) => {
@@ -74,7 +86,7 @@ function App() {
         <div className="clothing-items">
           {clothingItems.map((item) => (
             <div key={item.id} className="clothing-item" onClick={() => handleSelectItem(item)}>
-              <img src={item.image} alt={item.name} />
+              <img src={`http://localhost:5001/${item.image}`} alt={item.name} />
               <h3>{item.name}</h3>
               <p>{item.description}</p>
             </div>
